@@ -1,0 +1,47 @@
+Timer Lib
+..................................................................................................................................................................
+Version: 1.0
+Checked Kernel version: Redhat 3.10.0
+Timer calls: POSIX
+Author: Amit Huda
+..................................................................................................................................................................
+
+1.	Why timer Lib?
+	•	Timers create problems in multithreaded application as no of signal in Linux is limited. This library supports any number of timers per thread per process.
+
+2.	Where can be used?
+	•	Library has been checked with Redhat kernel 3.10.0.
+	•	As library used POSIX based timer calls, it can be used with any UNIX based system that supports POSIX calls with necessary modification.
+
+3.	Resolution support for timers.
+	•	For 100ms timer error is 0.12ms.
+
+4.	How to use?
+	•	Add libTimer.a library in your application.
+	•	For user library provides three function calls, with them user can create timer, modify timer and delete timer as per application requirement.
+	•	Function calls as below,
+		1.	int MakeTimer(  timer_t *timerID, int ExpireTimeInSecond, int ExpireTimeInNanoSecond,int IntervalTimeInSecond ,int IntervalTimeInNanoSecond, void (TimerHandler)(int));
+		2.	int ResetTimerVal( timer_t timerID, int ExpireTimeInSecond, int ExpireTimeInNanoSecond,int IntervalTimeInSecond ,int IntervalTimeInNanoSecond);
+		3.	int DeleteTimer(timer_t timerID);
+	•	MakeTimer() creates new timer.
+	•	ResetTimerVal() reconfigure timer.
+	•	DeleteTimer() Deletes timer
+	•	Each above mentioned call returns error no or 0(if no error presents).
+	•	If error is there error number is as follow
+		1.	TIMER_ERROR_NO_ERROR			0
+		2.	TIMER_ERROR_ID_NOT_ZER0			1
+		3.	TIMER_ERROR_SIGACTION_FAIL		2
+		4.	TIMER_ERROR_TIMER_CREATE_FAIL		3
+		5.	TIMER_ERROR_TIMER_SET_TIME_FAIL		4
+		6.	TIMER_ERROR_MALLOC_FAIL			5
+		7.	TIMER_ERROR_TIMER_DELETE_FAIL		6
+		8.	TIMER_ERROR_TIMER_NOT_PRESENT		7
+	•	Argument information as below,
+		1.	timerID : Timer id of type timer_t
+		2.	ExpireTimeInSecond: Expire time in seconds.
+		3.	ExpireTimeInNanoSecond: Expire time in nano seconds.
+		4.	IntervalTimeInSecond: Interval time in seconds.
+		5.	IntervalTimeInNanoSecond: Interval Time in nano seconds.
+		6.	TimerHandler : Handler function that user want to call when timer fires.
+	•	For further assistance look into sample program.
+
