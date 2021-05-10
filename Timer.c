@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
-#include <string.h>
+
 
 
 int MakeTimer( timer_t *timerID, int ExpireTimeInSecond, int ExpireTimeInNanoSecond,int IntervalTimeInSecond ,int IntervalTimeInNanoSecond, void (TimerHandler)(int))
