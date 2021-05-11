@@ -12,13 +12,11 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
-<<<<<<< HEAD
-#include <fcntl.h>
 
-=======
+#include <fcntl.h>
 #include <string.h>
 #include <ioctl.h>
->>>>>>> pavan
+
 
 int MakeTimer( timer_t *timerID, int ExpireTimeInSecond, int ExpireTimeInNanoSecond,int IntervalTimeInSecond ,int IntervalTimeInNanoSecond, void (TimerHandler)(int))
 {
